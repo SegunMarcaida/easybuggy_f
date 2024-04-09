@@ -15,14 +15,11 @@ pipeline {
         }
 
         stage('PMD') {
-            steps {
-                // Ejecuta PMD
-                sh '''
-                echo "Ejecutando PMD..."
-                pmd check -f text -R rulesets/java/quickstart.xml -d easybuggy -r pmd-report_easybuggy.txt
-                '''
-            }
-        }
+    steps {
+        echo 'Ejecutando PMD a través de Maven...'
+        sh 'mvn pmd:check'
+			}
+		}
 
         stage('Compilar y Testear') {
             steps {
