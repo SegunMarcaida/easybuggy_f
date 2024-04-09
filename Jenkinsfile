@@ -20,7 +20,7 @@ pipeline {
                 dir('easybuggy') {
                     sh '''
                     echo "Ejecutando pruebas con Maven..."
-                    mvn test
+                
 
                     echo "Ejecutando Maven Install..."
                     mvn install
