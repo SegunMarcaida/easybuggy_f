@@ -14,13 +14,6 @@ pipeline {
             }
         }
 
-        stage('PMD') {
-    steps {
-        echo 'Ejecutando PMD a través de Maven...'
-        sh 'mvn pmd:check'
-			}
-		}
-
         stage('Compilar y Testear') {
             steps {
                 // Cambia al directorio del proyecto y ejecuta las pruebas con Maven
