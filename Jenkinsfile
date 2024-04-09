@@ -2,38 +2,28 @@ pipeline {
     agent any
 
     tools {
-        // Asegúrate de que Maven esté configurado correctamente en Jenkins
-        maven 'Maven3'
+        // Install the Maven version configured as "M3" and add it to the path.
+        maven "Maven3"
     }
 
     stages {
-        stage('Preparar') {
+        stage('Test') {
             steps {
-                // Obtiene el código fuente del repositorio
-                checkout scm
+                // Run Maven on a Unix agent.
+                sh "mvn test"
             }
         }
-
-        stage('Compilar y Testear') {
+        stage('Build') {
             steps {
-                // Cambia al directorio del proyecto y ejecuta las pruebas con Maven
-                dir('easybuggy') {
-                    sh '''
-                    echo "Ejecutando pruebas con Maven..."
+                //Anális with sonarqube
+                sh "mvn clean verify sonar:sonar -Dsonar.projectKey=easy-buggy -Dsonar.host.url=http://localhost:9000 -Dsonar.login=sqp_f1d40dd817f4d04263ece5948d7fd7be887bcc4e"
+                    
+                // Run Maven on a Unix agent.
+                sh "mvn clean package"
                 
-
-                    echo "Ejecutando Maven Install..."
-                    mvn install
-                    '''
-                }
+                //Compilation+Packaged
+                sh "mvn install"
             }
-        }
-    }
-
-    post {
-        // Acciones a realizar después de completar las etapas, por ejemplo, limpiar o enviar notificaciones
-        always {
-            echo 'Proceso completado.'
         }
     }
 }
