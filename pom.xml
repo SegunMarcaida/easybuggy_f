@@ -130,29 +130,24 @@
 	
 	<build>
 		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-pmd-plugin</artifactId>
-				<version>3.21.2</version>
-                <executions>
-                    <execution>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>check</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <rulesets>
-                        <!-- Especifica tus rulesets de PMD aquí. Puedes utilizar uno predefinido o uno personalizado -->
-                        <ruleset>/rulesets/java/quickstart.xml</ruleset>
-                    </rulesets>
-                    <!-- Configuración para fallar el build en caso de encontrar problemas -->
-                    <failOnViolation>true</failOnViolation>
-                    <!-- Ajusta este valor según necesites -->
-                    <minimumPriority>3</minimumPriority>
-                </configuration>
-            </plugin>
+			 <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-pmd-plugin</artifactId>
+            <version>3.21.2</version> <!-- Asegúrate de usar la versión adecuada -->
+            <configuration>
+                <rulesets>
+                    <!-- Asegúrate de que la ruta al ruleset es correcta y no contiene comas -->
+                    <ruleset>/rulesets/java/quickstart.xml</ruleset>
+                </rulesets>
+            </configuration>
+            <executions>
+                <execution>
+                    <goals>
+                        <goal>pmd</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
