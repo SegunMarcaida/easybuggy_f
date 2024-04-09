@@ -2,13 +2,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page import="java.util.ResourceBundle"%>
-<c:set var="language" value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}" scope="session" />
+<c:set var="language" value="en"/>
 <fmt:setLocale value="${language}" />
 <fmt:setBundle basename="indexpage" />
 <%!boolean isFirstLoad = true;%>
 <%
     session.removeAttribute("dlpinit");
-    ResourceBundle rb = ResourceBundle.getBundle("messages", request.getLocale());
+    ResourceBundle rb = ResourceBundle.getBundle("messages_en", request.getLocale());
     String permName = rb.getString("label.metaspace");
     String permNameInErrorMsg = permName;
     String javaVersion = System.getProperty("java.version");
