@@ -131,9 +131,9 @@
 	<build>
 		<plugins>
 			<plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-pmd-plugin</artifactId>
-                <version>7.0.0</version> <!-- Asegúrate de utilizar la última versión disponible -->
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-pmd-plugin</artifactId>
+				<version>3.21.2</version>
                 <executions>
                     <execution>
                         <phase>verify</phase>
